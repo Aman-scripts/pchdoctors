@@ -1,5 +1,4 @@
-import { Headset } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Sparkles, ArrowRight } from "lucide-react";
 import {
   Accordion,
   AccordionItem,
@@ -42,42 +41,61 @@ const faqs = [
 
 export function Faq() {
   return (
-    <section id="faqs" className="mx-auto max-w-4xl px-6 py-20">
-      <div className="mx-auto max-w-2xl text-center">
-        <h2 className="font-heading text-3xl font-medium tracking-normal text-[#0a2733] sm:text-4xl">
-          Frequently Asked <span className="text-[#0d6e74]">Questions</span>
-        </h2>
-        <p className="mt-4 text-neutral-600">
-          Get answers to the most common questions about our medical
-          marijuana certification process.
-        </p>
-      </div>
+    <section id="faqs" className="relative overflow-hidden bg-[#fbfaf6] py-20">
+      <div className="pointer-events-none absolute -right-24 top-10 size-72 rounded-full bg-[#0d6e74]/5 blur-3xl" />
+      <div className="pointer-events-none absolute -left-24 bottom-10 size-72 rounded-full bg-[#f2a83c]/5 blur-3xl" />
 
-      <Accordion className="mt-10 gap-3 rounded-none border-none">
-        {faqs.map((faq) => (
-          <AccordionItem
-            key={faq.question}
-            value={faq.question}
-            className="rounded-xl border bg-[#f7f9f9] px-2 not-last:mb-3 not-last:border-b-0 data-open:bg-[#eef6f6]"
-          >
-            <AccordionTrigger className="py-4 text-sm font-medium text-[#0a2733] hover:no-underline">
-              {faq.question}
-            </AccordionTrigger>
-            <AccordionContent className="text-sm text-neutral-600">
-              {faq.answer}
-            </AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
+      <div className="relative mx-auto max-w-6xl px-6">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.3fr] lg:items-start">
+          <div>
+            <div className="flex items-center gap-2 text-xs font-semibold tracking-widest text-[#0a2733]/70">
+              <Sparkles className="size-3.5 text-[#f2a83c]" />
+              QUESTIONS &amp; ANSWERS
+            </div>
 
-      <div className="mt-10 flex flex-col items-center gap-3">
-        <Button className="rounded-full bg-[#0d6e74] px-6 py-5 text-white hover:bg-[#0d6e74]/90">
-          Still Got Questions
-        </Button>
-        <p className="flex items-center gap-1.5 text-xs text-neutral-500">
-          <Headset className="size-3.5 text-[#0d6e74]" />
-          Our support team is here to help you
-        </p>
+            <h2 className="font-heading mt-4 text-4xl font-medium leading-tight text-[#0a2733] sm:text-5xl">
+              Clear Answers for Your Care
+            </h2>
+
+            <p className="mt-6 max-w-sm text-neutral-600">
+              Clear answers on timelines, consultations, privacy, and what to
+              expect from your certification.
+            </p>
+
+            <div className="mt-10 rounded-2xl bg-[#eef6f6] p-6 ring-1 ring-black/5">
+              <h3 className="font-heading text-xl font-medium text-[#0a2733]">
+                Still have questions?
+              </h3>
+              <p className="mt-2 text-sm text-neutral-600">
+                Need clarity before booking? Speak with our support team and
+                get direct answers tailored to your situation.
+              </p>
+              <button className="group mt-6 flex w-fit items-center gap-3 rounded-full bg-[#f2a83c] py-1 pl-1 pr-5 text-sm font-semibold text-white transition-colors hover:bg-[#f2a83c]/90">
+                <span className="flex size-9 items-center justify-center rounded-full bg-white text-[#0a2733] transition-transform group-hover:translate-x-0.5">
+                  <ArrowRight className="size-4" />
+                </span>
+                Contact Us
+              </button>
+            </div>
+          </div>
+
+          <Accordion className="gap-4 rounded-none border-none">
+            {faqs.map((faq) => (
+              <AccordionItem
+                key={faq.question}
+                value={faq.question}
+                className="rounded-2xl bg-white px-6 shadow-sm ring-1 ring-black/5 not-last:mb-4 not-last:border-b-0 data-open:bg-white"
+              >
+                <AccordionTrigger className="py-6 text-base font-medium text-[#0a2733] hover:no-underline **:data-[slot=accordion-trigger-icon]:!size-8 **:data-[slot=accordion-trigger-icon]:shrink-0 **:data-[slot=accordion-trigger-icon]:rounded-full **:data-[slot=accordion-trigger-icon]:bg-[#f7f9f9] **:data-[slot=accordion-trigger-icon]:p-2 **:data-[slot=accordion-trigger-icon]:text-[#0a2733]">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="pb-6 text-sm text-neutral-600">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
       </div>
     </section>
   );

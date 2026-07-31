@@ -10,7 +10,7 @@ const reviews = [
   },
   {
     name: "Gabriela R.",
-    text: "I would expect to meet with someone in person.. not walk into a room with a computer waiting for me to skype. I tried to keep my mind open but the whole thing was glitchy. I was talking to a photo of someone.. so weird. I had questions that i wanted to ask but i couldn't even do that because the \"doctor\" kept fading out and i couldn't even understand what she was saying at all. I kept having to ask her to repeat herself but even then, i couldn't understand.",
+    text: "I would expect to meet with someone in person.. not walk into a room with a computer waiting for me to skype. I tried to keep my mind open but the whole thing was glitchy. I was talking to a photo of someone.. so weird.",
   },
   {
     name: "Nat C.",
@@ -22,7 +22,7 @@ const reviews = [
   },
   {
     name: "Heather H.",
-    text: "If you are looking to simply buy a rec to run off to the dispensary and get high with your homies, do not bother coming here. This is a professional location with doctors that will legitimately evaluate you for real qualifying conditions. You get real medical advice from a caring physician.",
+    text: "If you are looking to simply buy a rec to run off to the dispensary and get high with your homies, do not bother coming here. This is a professional location with doctors that will legitimately evaluate you for real qualifying conditions.",
   },
   {
     name: "BJ F.",
@@ -30,15 +30,15 @@ const reviews = [
   },
   {
     name: "Cee S.",
-    text: "Came in yesterday to renew..easy breezy. You too should come here, no bs. No non sense. Walk in, maybe a line..( I came when they opened, so I was first).. get paperwork.. fill out paperwork.. turn in paperwork.. wait to be called.. go in see doctor. That simple. Seriously.. I know what I need, so its simple for me. CBD chews and teas. & THCa ..Do yourself a favor and take a minute to look up some things. Happy hunting.",
+    text: "Came in yesterday to renew..easy breezy. You too should come here, no bs. No non sense. Walk in, maybe a line, get paperwork, fill out paperwork, turn in paperwork, wait to be called, go in see doctor. That simple.",
   },
   {
     name: "Matthew A.",
-    text: "Great place, great staff, safe location, all around best place to go for your rec, the doctors are actually knowledgeable allow you to explain your question and they don't rush you. Also the staff are very helpful find wait times for you and letting you know all the details about the rec and the MM I'D CARD, very great experience for me here... come get your rec their waiting for yahh (:",
+    text: "Great place, great staff, safe location, all around best place to go for your rec, the doctors are actually knowledgeable and allow you to explain your question and they don't rush you.",
   },
   {
     name: "Bryan C.",
-    text: "Nice place and fast service, I would recommend. Aaaaaaaaaa+. Come through for a rec. the doc is straight to the point and I like that they accept walk ins. The documentary they have playing in the lobby is interesting",
+    text: "Nice place and fast service, I would recommend. Come through for a rec. the doc is straight to the point and I like that they accept walk ins.",
   },
 ];
 
@@ -59,7 +59,73 @@ function Stars({ count = 5 }: { count?: number }) {
   );
 }
 
+function ReviewCard({ review, i }: { review: (typeof reviews)[number]; i: number }) {
+  return (
+    <Card className="relative mb-6 overflow-hidden p-5 shadow-sm ring-1 ring-black/5">
+      <Quote className="pointer-events-none absolute -right-2 -top-2 size-14 text-[#0d6e74]/5" />
+
+      <div className="relative flex items-center justify-between">
+        <div className="flex items-center gap-2.5">
+          <span
+            className={cn(
+              "flex size-8 items-center justify-center rounded-full text-xs font-semibold text-white",
+              avatarTones[i % avatarTones.length]
+            )}
+          >
+            {review.name.charAt(0)}
+          </span>
+          <div>
+            <p className="font-heading text-sm font-medium text-[#0a2733]">
+              {review.name}
+            </p>
+            <span className="text-[10px] text-[#0d6e74]">Verified</span>
+          </div>
+        </div>
+        <Stars />
+      </div>
+
+      <p className="relative mt-3 text-sm text-neutral-600">{review.text}</p>
+
+      <span className="relative mt-3 block text-[10px] text-neutral-400">
+        Posted on Yelp
+      </span>
+    </Card>
+  );
+}
+
+function MarqueeColumn({
+  items,
+  direction,
+  duration,
+}: {
+  items: typeof reviews;
+  direction: "up" | "down";
+  duration: string;
+}) {
+  return (
+    <div className="relative h-[640px] overflow-hidden">
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-16 bg-gradient-to-b from-white to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-16 bg-gradient-to-t from-white to-transparent" />
+
+      <div
+        className="flex flex-col"
+        style={{
+          animation: `${direction === "up" ? "marquee-up" : "marquee-down"} ${duration} linear infinite`,
+        }}
+      >
+        {[...items, ...items].map((review, i) => (
+          <ReviewCard key={`${review.name}-${i}`} review={review} i={i} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function Reviews() {
+  const col1 = reviews.filter((_, i) => i % 3 === 0);
+  const col2 = reviews.filter((_, i) => i % 3 === 1);
+  const col3 = reviews.filter((_, i) => i % 3 === 2);
+
   return (
     <section id="reviews" className="relative overflow-hidden py-20">
       <div className="pointer-events-none absolute -right-24 top-0 size-72 rounded-full bg-[#0d6e74]/5 blur-3xl" />
@@ -76,40 +142,17 @@ export function Reviews() {
           </p>
         </div>
 
-        <div className="mt-14 columns-1 gap-6 sm:columns-2 lg:columns-3">
+        <div className="mt-14 hidden gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-3">
+          <MarqueeColumn items={col1} direction="up" duration="38s" />
+          <MarqueeColumn items={col2} direction="down" duration="44s" />
+          <div className="hidden lg:block">
+            <MarqueeColumn items={col3} direction="up" duration="32s" />
+          </div>
+        </div>
+
+        <div className="mt-14 flex flex-col gap-4 sm:hidden">
           {reviews.map((review, i) => (
-            <Card
-              key={review.name}
-              className="relative mb-6 break-inside-avoid overflow-hidden p-5 shadow-sm ring-1 ring-black/5 transition-shadow hover:shadow-md"
-            >
-              <Quote className="pointer-events-none absolute -right-2 -top-2 size-14 text-[#0d6e74]/5" />
-
-              <div className="relative flex items-center justify-between">
-                <div className="flex items-center gap-2.5">
-                  <span
-                    className={cn(
-                      "flex size-8 items-center justify-center rounded-full text-xs font-semibold text-white",
-                      avatarTones[i % avatarTones.length]
-                    )}
-                  >
-                    {review.name.charAt(0)}
-                  </span>
-                  <div>
-                    <p className="font-heading text-sm font-medium text-[#0a2733]">
-                      {review.name}
-                    </p>
-                    <span className="text-[10px] text-[#0d6e74]">Verified</span>
-                  </div>
-                </div>
-                <Stars />
-              </div>
-
-              <p className="relative mt-3 text-sm text-neutral-600">{review.text}</p>
-
-              <span className="relative mt-3 block text-[10px] text-neutral-400">
-                Posted on Yelp
-              </span>
-            </Card>
+            <ReviewCard key={review.name} review={review} i={i} />
           ))}
         </div>
 
