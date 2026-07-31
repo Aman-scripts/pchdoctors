@@ -38,7 +38,7 @@ export function Hero() {
           our trusted telemedicine platform.
         </p>
 
-        <Button className="mt-8 rounded-full bg-[#0d6e74] px-8 py-5 text-white hover:bg-[#0d6e74]/90">
+        <Button className="mt-8 rounded-full bg-[#f2a83c] px-8 py-5 text-white hover:bg-[#f2a83c]/90">
           Book Your Doctor Consultation Today
         </Button>
 

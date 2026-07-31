@@ -101,7 +101,7 @@ export function Pricing() {
                 </p>
                 <button className="group mt-5 flex w-full items-center justify-between gap-3 rounded-full bg-white py-1 pl-5 pr-1 text-sm font-medium text-[#0a2733] transition-colors hover:bg-white/90">
                   Book Slot
-                  <span className="flex size-8 items-center justify-center rounded-full bg-[#0d6e74] text-white transition-transform group-hover:translate-x-0.5">
+                  <span className="flex size-8 items-center justify-center rounded-full bg-[#f2a83c] text-white transition-transform group-hover:translate-x-0.5">
                     <ArrowRight className="size-4" />
                   </span>
                 </button>

@@ -62,7 +62,7 @@ export function SiteHeader() {
           </nav>
 
           <div className="hidden lg:block">
-            <Button className="rounded-full bg-[#0d6e74] px-5 py-5 text-white shadow-[0_8px_24px_rgba(13,110,116,0.35)] transition-shadow hover:bg-[#0d6e74]/90 hover:shadow-[0_10px_28px_rgba(13,110,116,0.45)]">
+            <Button className="rounded-full bg-[#f2a83c] px-5 py-5 text-white shadow-[0_8px_24px_rgba(242,168,60,0.35)] transition-shadow hover:bg-[#f2a83c]/90 hover:shadow-[0_10px_28px_rgba(242,168,60,0.45)]">
               Book Your Consultation
             </Button>
           </div>
@@ -92,7 +92,7 @@ export function SiteHeader() {
               {link.label}
             </a>
           ))}
-          <Button className="mt-1 w-full rounded-full bg-[#0d6e74] text-white hover:bg-[#0d6e74]/90">
+          <Button className="mt-1 w-full rounded-full bg-[#f2a83c] text-white hover:bg-[#f2a83c]/90">
             Book Your Consultation
           </Button>
         </div>

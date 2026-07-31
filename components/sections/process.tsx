@@ -105,7 +105,7 @@ export function Process() {
           </div>
 
           <Button className="group gap-3 rounded-full bg-white py-6 pl-2 pr-5 text-[#0a2733] hover:bg-white/90">
-            <span className="flex size-8 items-center justify-center rounded-full bg-[#0d6e74] text-white transition-transform group-hover:translate-x-0.5">
+            <span className="flex size-8 items-center justify-center rounded-full bg-[#f2a83c] text-white transition-transform group-hover:translate-x-0.5">
               <ArrowRight className="size-4" />
             </span>
             Start Your Certification Process

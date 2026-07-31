@@ -1,46 +1,15 @@
 import Image from "next/image";
-import { ArrowRight, Camera, ThumbsUp, AtSign, Play, Mail, Phone, MapPin } from "lucide-react";
+import { ArrowRight, ChevronRight, Mail, Phone, MapPin } from "lucide-react";
 
-const footerColumns = [
-  {
-    title: "Get Started",
-    links: [
-      { label: "Home", href: "#" },
-      { label: "Process", href: "#process" },
-      { label: "Consultations", href: "#consultations" },
-      { label: "Pricing", href: "#pricing" },
-    ],
-  },
-  {
-    title: "Services",
-    links: [
-      { label: "Medical Marijuana Evaluation", href: "#services" },
-      { label: "GLP-1 Weight Loss Program", href: "#services" },
-      { label: "MMJ Card Renewals", href: "#pricing" },
-      { label: "State Programs", href: "#faqs" },
-    ],
-  },
-  {
-    title: "Resources",
-    links: [
-      { label: "Reviews", href: "#reviews" },
-      { label: "FAQs", href: "#faqs" },
-      { label: "Support", href: "#faqs" },
-      { label: "Medical Disclaimer", href: "#faqs" },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { label: "Contact Us", href: "#faqs" },
-      { label: "Privacy Policy", href: "#" },
-      { label: "Terms of Service", href: "#" },
-      { label: "Careers", href: "#" },
-    ],
-  },
+const quickLinks = [
+  { label: "Home", href: "#" },
+  { label: "Process", href: "#process" },
+  { label: "Consultations", href: "#consultations" },
+  { label: "Reviews", href: "#reviews" },
+  { label: "Pricing", href: "#pricing" },
 ];
 
-const socials = [Camera, Play, ThumbsUp, AtSign];
+const services = ["Medical Marijuana Evaluation", "GLP 1 Weight Loss Program"];
 
 export function SiteFooter() {
   return (
@@ -57,34 +26,13 @@ export function SiteFooter() {
                 alt="PCH Doctors"
                 width={1251}
                 height={512}
-                className="h-8 w-auto"
+                className="h-9 w-auto"
               />
             </div>
-
-            <h2 className="font-heading mt-6 text-3xl font-medium leading-tight text-white">
-              Get Certified Faster.
-              <br />
-              Care Smarter.
-            </h2>
             <p className="mt-4 text-sm text-white/60">
-              Connect with licensed physicians and get your medical marijuana
-              recommendation in minutes, not days.
+              Nationwide medical marijuana consultations with licensed doctors
+              via secure telemedicine.
             </p>
-
-            <ul className="mt-6 space-y-3 text-sm text-white/70">
-              <li className="flex items-center gap-2">
-                <Mail className="size-4 text-[#f2a83c]" />
-                contact@pchdoctors.com
-              </li>
-              <li className="flex items-center gap-2">
-                <Phone className="size-4 text-[#f2a83c]" />
-                +1 (424) 424 – 1618
-              </li>
-              <li className="flex items-start gap-2">
-                <MapPin className="size-4 shrink-0 text-[#f2a83c]" />
-                910 W Pacific Coast Hwy Unit D Wilmington, CA 90744
-              </li>
-            </ul>
 
             <div className="mt-8">
               <p className="mb-2 text-sm font-medium text-white/80">Newsletter:</p>
@@ -97,7 +45,7 @@ export function SiteFooter() {
                 <button
                   type="submit"
                   aria-label="Subscribe"
-                  className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#0d6e74] text-white transition-colors hover:bg-[#0d6e74]/90"
+                  className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#f2a83c] text-white transition-colors hover:bg-[#f2a83c]/90"
                 >
                   <ArrowRight className="size-4" />
                 </button>
@@ -105,54 +53,78 @@ export function SiteFooter() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
-            {footerColumns.map((column) => (
-              <div key={column.title}>
-                <h3 className="font-heading text-sm font-medium text-white/50">
-                  {column.title}
-                </h3>
-                <ul className="mt-4 space-y-3">
-                  {column.links.map((link) => (
-                    <li key={link.label}>
-                      <a
-                        href={link.href}
-                        className="text-sm text-white/80 transition-colors hover:text-[#f2a83c]"
-                      >
-                        {link.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 sm:gap-x-12">
+            <div className="min-w-0">
+              <h3 className="font-heading text-sm font-medium text-white/50">
+                Quick Links
+              </h3>
+              <ul className="mt-4 space-y-3">
+                {quickLinks.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      className="flex items-center gap-2 text-sm text-white/80 transition-colors hover:text-[#f2a83c]"
+                    >
+                      <ChevronRight className="size-3.5 text-[#f2a83c]" />
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="min-w-0">
+              <h3 className="font-heading text-sm font-medium text-white/50">
+                Services
+              </h3>
+              <ul className="mt-4 space-y-3">
+                {services.map((service) => (
+                  <li key={service} className="flex items-center gap-2 text-sm text-white/80">
+                    <ChevronRight className="size-3.5 text-[#f2a83c]" />
+                    {service}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="min-w-0">
+              <h3 className="font-heading text-sm font-medium text-white/50">
+                Contact Us
+              </h3>
+              <ul className="mt-4 space-y-3">
+                <li className="flex min-w-0 items-center gap-2 text-sm text-white/80">
+                  <Mail className="size-4 shrink-0 text-[#f2a83c]" />
+                  <span className="break-all">contact@pchdoctors.com</span>
+                </li>
+                <li className="flex min-w-0 items-center gap-2 text-sm text-white/80">
+                  <Phone className="size-4 shrink-0 text-[#f2a83c]" />
+                  <span className="break-words">+1 (424) 424 – 1618</span>
+                </li>
+                <li className="flex min-w-0 items-start gap-2 text-sm text-white/80">
+                  <MapPin className="size-4 shrink-0 text-[#f2a83c]" />
+                  <span className="break-words">
+                    910 W Pacific Coast Hwy Unit D Wilmington, CA 90744
+                  </span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
-        <p className="mt-10 max-w-2xl border-t border-white/10 pt-6 text-xs text-white/40">
+        <div className="mt-10 flex flex-col-reverse items-center gap-4 border-t border-white/10 py-6 sm:flex-row sm:justify-between">
+          <p className="text-xs text-white/50">
+            © 2025 PCH Doctors. All rights reserved.
+          </p>
+        </div>
+
+        <p className="border-t border-white/10 pb-10 pt-6 text-xs text-white/40">
           Medical Disclaimer: This website provides general information about
-          medical marijuana and is not intended as medical advice. Please
+          medical marijuana and is not intended as medical advice. Individual
+          results may vary. Cannabis affects everyone differently. Please
           consult with a licensed physician to determine if medical marijuana
           is right for your specific condition. The information provided has
           not been evaluated by the FDA.
         </p>
-
-        <div className="mt-6 flex flex-col-reverse items-center gap-4 border-t border-white/10 py-6 sm:flex-row sm:justify-between">
-          <p className="text-xs text-white/50">
-            © 2025 PCH Doctors. All rights reserved.
-          </p>
-          <div className="flex items-center gap-3">
-            {socials.map((Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                aria-label="Social link"
-                className="flex size-8 items-center justify-center rounded-full bg-white/10 text-white/70 transition-colors hover:bg-white/20 hover:text-white"
-              >
-                <Icon className="size-4" />
-              </a>
-            ))}
-          </div>
-        </div>
       </div>
 
       <div className="pointer-events-none relative overflow-hidden pb-4">
