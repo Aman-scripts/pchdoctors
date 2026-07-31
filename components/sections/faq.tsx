@@ -41,7 +41,7 @@ const faqs = [
 
 export function Faq() {
   return (
-    <section id="faqs" className="relative overflow-hidden bg-[#fbfaf6] py-20">
+    <section id="faqs" className="relative overflow-hidden bg-[#eef6f6] py-20">
       <div className="pointer-events-none absolute -right-24 top-10 size-72 rounded-full bg-[#0d6e74]/5 blur-3xl" />
       <div className="pointer-events-none absolute -left-24 bottom-10 size-72 rounded-full bg-[#f2a83c]/5 blur-3xl" />
 
@@ -53,8 +53,8 @@ export function Faq() {
               QUESTIONS &amp; ANSWERS
             </div>
 
-            <h2 className="font-heading mt-4 text-4xl font-medium leading-tight text-[#0a2733] sm:text-5xl">
-              Clear Answers for Your Care
+            <h2 className="font-heading mt-4 text-3xl font-medium leading-tight tracking-normal text-[#0a2733] sm:text-4xl">
+              Clear <span className="text-[#0d6e74]">Answers</span> for Your Care
             </h2>
 
             <p className="mt-6 max-w-sm text-neutral-600">
@@ -62,7 +62,7 @@ export function Faq() {
               expect from your certification.
             </p>
 
-            <div className="mt-10 rounded-2xl bg-[#eef6f6] p-6 ring-1 ring-black/5">
+            <div className="mt-10 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5">
               <h3 className="font-heading text-xl font-medium text-[#0a2733]">
                 Still have questions?
               </h3>

@@ -37,21 +37,25 @@ export function Pricing() {
       <div className="pointer-events-none absolute -right-32 -bottom-32 size-96 rounded-full bg-[#f2a83c]/10 blur-3xl" />
 
       <div className="relative mx-auto max-w-6xl px-6">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
-          <div className="flex items-center gap-2 text-white">
-            <ArrowRight className="size-4 text-[#f2a83c]" />
-            <span className="font-heading text-lg font-medium">
-              [ Pricing ]
-            </span>
-          </div>
-          <p className="max-w-md text-sm text-white/60">
+        <div className="flex items-center gap-2 text-xs font-semibold tracking-widest text-white/70">
+          <span className="size-2 rounded-full bg-[#f2a83c]" />
+          PRICING
+        </div>
+
+        <div className="mt-4 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <h2 className="font-heading text-3xl font-medium tracking-normal text-white sm:text-4xl">
+            Know Your <span className="text-[#f2a83c]">Consultation</span> Costs
+          </h2>
+          <p className="max-w-md text-sm text-white/60 lg:mb-1">
             We know every patient&rsquo;s needs are unique — that&rsquo;s why
             PCH Doctors keeps pricing transparent. Choose a plan for your
             first certification or a fast, affordable renewal.
           </p>
         </div>
 
-        <div className="mt-10 grid gap-6 sm:mx-auto sm:max-w-3xl sm:grid-cols-2">
+        <div className="mt-6 h-px w-full bg-white/15" />
+
+        <div className="mt-12 grid gap-6 sm:mx-auto sm:max-w-3xl sm:grid-cols-2">
           {pricingPlans.map((plan) => (
             <div
               key={plan.name}
@@ -95,9 +99,11 @@ export function Pricing() {
                 <p className="font-heading mt-1 text-3xl font-medium text-white">
                   {plan.price}
                 </p>
-                <button className="group mt-5 flex w-full items-center justify-between rounded-xl bg-white/10 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-white/15">
+                <button className="group mt-5 flex w-full items-center justify-between gap-3 rounded-full bg-white py-1 pl-5 pr-1 text-sm font-medium text-[#0a2733] transition-colors hover:bg-white/90">
                   Book Slot
-                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+                  <span className="flex size-8 items-center justify-center rounded-full bg-[#0d6e74] text-white transition-transform group-hover:translate-x-0.5">
+                    <ArrowRight className="size-4" />
+                  </span>
                 </button>
               </div>
             </div>
