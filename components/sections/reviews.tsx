@@ -1,0 +1,127 @@
+import { Star, Quote } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+
+const reviews = [
+  {
+    name: "Kionna M.",
+    text: "Dr Joseph Michelson was super helpful with my first time experience here, making everything fast & friendly.. in definitely coming back here",
+  },
+  {
+    name: "Gabriela R.",
+    text: "I would expect to meet with someone in person.. not walk into a room with a computer waiting for me to skype. I tried to keep my mind open but the whole thing was glitchy. I was talking to a photo of someone.. so weird. I had questions that i wanted to ask but i couldn't even do that because the \"doctor\" kept fading out and i couldn't even understand what she was saying at all. I kept having to ask her to repeat herself but even then, i couldn't understand.",
+  },
+  {
+    name: "Nat C.",
+    text: "Awesome doctor ! He gave me a few pointers on cannabis and they are Super friendly :) second year here will be back",
+  },
+  {
+    name: "Michelle J.",
+    text: "My first time getting a recommendation and I must say it was an amazing one. The Dr. Is patient and understanding. The receptionist was amazing as well, left her a $10 tip! Thank you so much!",
+  },
+  {
+    name: "Heather H.",
+    text: "If you are looking to simply buy a rec to run off to the dispensary and get high with your homies, do not bother coming here. This is a professional location with doctors that will legitimately evaluate you for real qualifying conditions. You get real medical advice from a caring physician.",
+  },
+  {
+    name: "BJ F.",
+    text: "I've been going there for 3 years now. I can't understand the bad reviews. The doctor is kind and very educational. When I was new to this type of treatment, he explained everything.",
+  },
+  {
+    name: "Cee S.",
+    text: "Came in yesterday to renew..easy breezy. You too should come here, no bs. No non sense. Walk in, maybe a line..( I came when they opened, so I was first).. get paperwork.. fill out paperwork.. turn in paperwork.. wait to be called.. go in see doctor. That simple. Seriously.. I know what I need, so its simple for me. CBD chews and teas. & THCa ..Do yourself a favor and take a minute to look up some things. Happy hunting.",
+  },
+  {
+    name: "Matthew A.",
+    text: "Great place, great staff, safe location, all around best place to go for your rec, the doctors are actually knowledgeable allow you to explain your question and they don't rush you. Also the staff are very helpful find wait times for you and letting you know all the details about the rec and the MM I'D CARD, very great experience for me here... come get your rec their waiting for yahh (:",
+  },
+  {
+    name: "Bryan C.",
+    text: "Nice place and fast service, I would recommend. Aaaaaaaaaa+. Come through for a rec. the doc is straight to the point and I like that they accept walk ins. The documentary they have playing in the lobby is interesting",
+  },
+];
+
+const avatarTones = [
+  "bg-[#0d6e74]",
+  "bg-[#f2a83c]",
+  "bg-[#e0342a]",
+  "bg-[#0a4f54]",
+];
+
+function Stars({ count = 5 }: { count?: number }) {
+  return (
+    <div className="flex gap-0.5">
+      {Array.from({ length: count }).map((_, i) => (
+        <Star key={i} className="size-3.5 fill-[#e0342a] text-[#e0342a]" />
+      ))}
+    </div>
+  );
+}
+
+export function Reviews() {
+  return (
+    <section id="reviews" className="relative overflow-hidden py-20">
+      <div className="pointer-events-none absolute -right-24 top-0 size-72 rounded-full bg-[#0d6e74]/5 blur-3xl" />
+      <div className="pointer-events-none absolute -left-24 bottom-0 size-80 rounded-full bg-[#f2a83c]/5 blur-3xl" />
+
+      <div className="relative mx-auto max-w-6xl px-6">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="font-heading text-3xl font-medium tracking-normal text-[#0a2733] sm:text-4xl">
+            What Our <span className="text-[#0d6e74]">Customers</span> Say?
+          </h2>
+          <p className="mt-4 text-neutral-600">
+            Trusted by thousands – real stories of fast, affordable, and
+            stress-free medical marijuana evaluations online.
+          </p>
+        </div>
+
+        <div className="mt-14 columns-1 gap-6 sm:columns-2 lg:columns-3">
+          {reviews.map((review, i) => (
+            <Card
+              key={review.name}
+              className="relative mb-6 break-inside-avoid overflow-hidden p-5 shadow-sm ring-1 ring-black/5 transition-shadow hover:shadow-md"
+            >
+              <Quote className="pointer-events-none absolute -right-2 -top-2 size-14 text-[#0d6e74]/5" />
+
+              <div className="relative flex items-center justify-between">
+                <div className="flex items-center gap-2.5">
+                  <span
+                    className={cn(
+                      "flex size-8 items-center justify-center rounded-full text-xs font-semibold text-white",
+                      avatarTones[i % avatarTones.length]
+                    )}
+                  >
+                    {review.name.charAt(0)}
+                  </span>
+                  <div>
+                    <p className="font-heading text-sm font-medium text-[#0a2733]">
+                      {review.name}
+                    </p>
+                    <span className="text-[10px] text-[#0d6e74]">Verified</span>
+                  </div>
+                </div>
+                <Stars />
+              </div>
+
+              <p className="relative mt-3 text-sm text-neutral-600">{review.text}</p>
+
+              <span className="relative mt-3 block text-[10px] text-neutral-400">
+                Posted on Yelp
+              </span>
+            </Card>
+          ))}
+        </div>
+
+        <div className="mt-4 flex flex-col items-center gap-3">
+          <Button className="rounded-full bg-[#0d6e74] px-6 py-5 text-white hover:bg-[#0d6e74]/90">
+            Read More Reviews
+          </Button>
+          <p className="text-xs text-neutral-500">
+            Every customer&rsquo;s review helps us improve.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
