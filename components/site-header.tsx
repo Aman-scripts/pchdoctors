@@ -3,13 +3,18 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, X, Sparkles, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+const services = [
+  { label: "Medical Marijuana Consultation", href: "#services" },
+  { label: "GLP-1 Weight Loss Treatment", href: "#services" },
+];
+
 const navLinks = [
   { label: "Home", href: "#" },
-  { label: "Services", href: "#services" },
+  { label: "Services", href: "#services", children: services },
   { label: "Process", href: "#process" },
   { label: "Consultations", href: "#consultations" },
   { label: "Reviews", href: "#reviews" },
@@ -19,6 +24,7 @@ const navLinks = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
 
   return (
     <header className="w-full">
@@ -50,15 +56,58 @@ export function SiteHeader() {
           </Link>
 
           <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-full bg-white/60 p-1 text-sm font-medium text-[#0a2733]/70 backdrop-blur-md lg:flex">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="rounded-full px-4 py-2 transition-colors hover:bg-[#eef6f6] hover:text-[#0d6e74]"
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) =>
+              link.children ? (
+                <div
+                  key={link.label}
+                  className="relative"
+                  onMouseEnter={() => setServicesOpen(true)}
+                  onMouseLeave={() => setServicesOpen(false)}
+                >
+                  <a
+                    href={link.href}
+                    className="flex items-center gap-1 rounded-full px-4 py-2 transition-colors hover:bg-[#eef6f6] hover:text-[#0d6e74]"
+                  >
+                    {link.label}
+                    <ChevronDown
+                      className={cn(
+                        "size-3.5 transition-transform",
+                        servicesOpen && "rotate-180"
+                      )}
+                    />
+                  </a>
+
+                  <div
+                    className={cn(
+                      "absolute left-1/2 top-full w-64 -translate-x-1/2 pt-2 transition-all",
+                      servicesOpen
+                        ? "pointer-events-auto opacity-100"
+                        : "pointer-events-none translate-y-1 opacity-0"
+                    )}
+                  >
+                    <div className="overflow-hidden rounded-xl bg-white p-2 shadow-lg ring-1 ring-black/5">
+                      {link.children.map((child) => (
+                        <a
+                          key={child.label}
+                          href={child.href}
+                          className="block rounded-lg px-3 py-2.5 text-sm text-[#0a2733]/80 transition-colors hover:bg-[#0d6e74] hover:text-white"
+                        >
+                          {child.label}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="rounded-full px-4 py-2 transition-colors hover:bg-[#eef6f6] hover:text-[#0d6e74]"
+                >
+                  {link.label}
+                </a>
+              )
+            )}
           </nav>
 
           <div className="hidden lg:block">
@@ -79,19 +128,43 @@ export function SiteHeader() {
         <div
           className={cn(
             "mx-4 flex flex-col gap-1 overflow-hidden rounded-2xl bg-white/90 px-4 shadow-md ring-1 ring-[#0d6e74]/15 backdrop-blur-md transition-all lg:hidden",
-            open ? "mb-2 max-h-96 py-3" : "max-h-0 py-0"
+            open ? "mb-2 max-h-[32rem] py-3" : "max-h-0 py-0"
           )}
         >
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="rounded-lg px-2 py-2 text-sm font-medium text-[#0a2733]/70 transition-colors hover:bg-[#eef6f6] hover:text-[#0d6e74]"
-              onClick={() => setOpen(false)}
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) =>
+            link.children ? (
+              <div key={link.label} className="flex flex-col">
+                <a
+                  href={link.href}
+                  className="rounded-lg px-2 py-2 text-sm font-medium text-[#0a2733]/70 transition-colors hover:bg-[#eef6f6] hover:text-[#0d6e74]"
+                  onClick={() => setOpen(false)}
+                >
+                  {link.label}
+                </a>
+                <div className="ml-3 flex flex-col gap-1 border-l border-[#0d6e74]/15 pl-3">
+                  {link.children.map((child) => (
+                    <a
+                      key={child.label}
+                      href={child.href}
+                      className="rounded-lg px-2 py-1.5 text-sm text-[#0a2733]/60 transition-colors hover:bg-[#eef6f6] hover:text-[#0d6e74]"
+                      onClick={() => setOpen(false)}
+                    >
+                      {child.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <a
+                key={link.label}
+                href={link.href}
+                className="rounded-lg px-2 py-2 text-sm font-medium text-[#0a2733]/70 transition-colors hover:bg-[#eef6f6] hover:text-[#0d6e74]"
+                onClick={() => setOpen(false)}
+              >
+                {link.label}
+              </a>
+            )
+          )}
           <Button className="mt-1 w-full rounded-full bg-[#f2a83c] py-6 text-sm font-semibold text-white hover:bg-[#f2a83c]/90">
             Book Your Consultation
           </Button>

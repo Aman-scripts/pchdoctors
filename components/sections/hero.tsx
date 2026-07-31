@@ -14,12 +14,12 @@ export function Hero() {
       <div className="relative mx-auto flex max-w-4xl flex-col items-center px-6 py-20 text-center lg:py-28">
         <Badge
           variant="outline"
-          className="h-8 gap-2 rounded-full border-neutral-200 bg-white/80 px-4 text-xs shadow-sm backdrop-blur"
+          className="h-11 gap-2.5 rounded-full border-neutral-200 bg-white/80 px-5 text-sm shadow-sm backdrop-blur"
         >
           <span className="font-semibold text-[#0a2733]">4.9/5</span>
-          <Star className="size-3.5 fill-[#f2a83c] text-[#f2a83c]" />
+          <Star className="size-4.5 fill-[#f2a83c] text-[#f2a83c]" />
           <span className="text-neutral-500">Rated by Patients</span>
-          <span className="flex size-4 items-center justify-center rounded-full bg-[#e0342a] text-[9px] font-bold text-white">
+          <span className="flex size-6 items-center justify-center rounded-full bg-[#e0342a] text-xs font-bold text-white">
             P
           </span>
         </Badge>
