@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowRight, ChevronRight, Mail, Phone, MapPin } from "lucide-react";
+import { ChevronRight, Mail, Phone, MapPin } from "lucide-react";
 
 const quickLinks = [
   { label: "Home", href: "#" },
@@ -33,24 +33,6 @@ export function SiteFooter() {
               Nationwide medical marijuana consultations with licensed doctors
               via secure telemedicine.
             </p>
-
-            <div className="mt-8">
-              <p className="mb-2 text-sm font-medium text-white/80">Newsletter:</p>
-              <form className="flex items-center justify-between border-b border-white/20 pb-2">
-                <input
-                  type="email"
-                  placeholder="you@email.com"
-                  className="w-full bg-transparent text-sm text-white placeholder:text-white/40 outline-none"
-                />
-                <button
-                  type="submit"
-                  aria-label="Subscribe"
-                  className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#f2a83c] text-white transition-colors hover:bg-[#f2a83c]/90"
-                >
-                  <ArrowRight className="size-4" />
-                </button>
-              </form>
-            </div>
           </div>
 
           <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 sm:gap-x-12">

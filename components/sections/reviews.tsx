@@ -157,7 +157,7 @@ export function Reviews() {
         </div>
 
         <div className="mt-4 flex flex-col items-center gap-3">
-          <Button className="rounded-full bg-[#f2a83c] px-6 py-5 text-white hover:bg-[#f2a83c]/90">
+          <Button className="rounded-full bg-[#f2a83c] px-7 py-6 text-sm font-semibold text-white hover:bg-[#f2a83c]/90">
             Read More Reviews
           </Button>
           <p className="text-xs text-neutral-500">

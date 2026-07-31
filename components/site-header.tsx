@@ -36,8 +36,8 @@ export function SiteHeader() {
         </p>
       </div>
 
-      <div className="sticky top-0 z-50 bg-white">
-        <div className="relative mx-auto flex max-w-7xl items-center justify-between px-2 py-4">
+      <div className="sticky top-0 z-50 bg-[#dcf0f1]/90 backdrop-blur-md">
+        <div className="relative mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
           <Link href="#" className="flex items-center">
             <Image
               src="/pch-doctors-logo.png"
@@ -49,12 +49,12 @@ export function SiteHeader() {
             />
           </Link>
 
-          <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 text-sm font-medium text-neutral-600 lg:flex">
+          <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-full bg-white/60 p-1 text-sm font-medium text-[#0a2733]/70 backdrop-blur-md lg:flex">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="transition-colors hover:text-[#0d6e74]"
+                className="rounded-full px-4 py-2 transition-colors hover:bg-[#eef6f6] hover:text-[#0d6e74]"
               >
                 {link.label}
               </a>
@@ -62,37 +62,37 @@ export function SiteHeader() {
           </nav>
 
           <div className="hidden lg:block">
-            <Button className="rounded-full bg-[#f2a83c] px-5 py-5 text-white shadow-[0_8px_24px_rgba(242,168,60,0.35)] transition-shadow hover:bg-[#f2a83c]/90 hover:shadow-[0_10px_28px_rgba(242,168,60,0.45)]">
+            <Button className="rounded-full bg-[#f2a83c] px-6 py-6 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(242,168,60,0.35)] transition-shadow hover:bg-[#f2a83c]/90 hover:shadow-[0_10px_28px_rgba(242,168,60,0.45)]">
               Book Your Consultation
             </Button>
           </div>
 
           <button
-            className="p-2 lg:hidden"
+            className="rounded-full bg-white/80 p-2 shadow-sm ring-1 ring-[#0d6e74]/15 backdrop-blur-md lg:hidden"
             aria-label="Toggle menu"
             onClick={() => setOpen((v) => !v)}
           >
-            {open ? <X className="size-5" /> : <Menu className="size-5" />}
+            {open ? <X className="size-5 text-[#0a2733]" /> : <Menu className="size-5 text-[#0a2733]" />}
           </button>
         </div>
 
         <div
           className={cn(
-            "flex flex-col gap-1 overflow-hidden border-t border-neutral-100 bg-white px-6 transition-all lg:hidden",
-            open ? "max-h-96 py-3" : "max-h-0 py-0"
+            "mx-4 flex flex-col gap-1 overflow-hidden rounded-2xl bg-white/90 px-4 shadow-md ring-1 ring-[#0d6e74]/15 backdrop-blur-md transition-all lg:hidden",
+            open ? "mb-2 max-h-96 py-3" : "max-h-0 py-0"
           )}
         >
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="rounded-lg px-2 py-2 text-sm font-medium text-neutral-700 transition-colors hover:text-[#0d6e74]"
+              className="rounded-lg px-2 py-2 text-sm font-medium text-[#0a2733]/70 transition-colors hover:bg-[#eef6f6] hover:text-[#0d6e74]"
               onClick={() => setOpen(false)}
             >
               {link.label}
             </a>
           ))}
-          <Button className="mt-1 w-full rounded-full bg-[#f2a83c] text-white hover:bg-[#f2a83c]/90">
+          <Button className="mt-1 w-full rounded-full bg-[#f2a83c] py-6 text-sm font-semibold text-white hover:bg-[#f2a83c]/90">
             Book Your Consultation
           </Button>
         </div>
