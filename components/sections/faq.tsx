@@ -53,7 +53,7 @@ export function Faq() {
               QUESTIONS &amp; ANSWERS
             </div>
 
-            <h2 className="font-heading mt-4 text-3xl font-medium leading-tight tracking-normal text-[#0a2733] sm:text-4xl">
+            <h2 className="font-heading mt-4 whitespace-nowrap text-2xl font-medium leading-tight tracking-normal text-[#0a2733] sm:text-3xl lg:text-4xl">
               Clear <span className="text-[#0d6e74]">Answers</span> for Your Care
             </h2>
 
