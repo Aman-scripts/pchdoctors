@@ -22,8 +22,8 @@ export function SiteHeader() {
 
   return (
     <header className="w-full">
-      <div className="hidden items-center justify-center gap-2 bg-gradient-to-r from-[#0a4f54] via-[#0d6e74] to-[#0a4f54] px-6 py-2.5 text-xs text-white sm:flex">
-        <Sparkles className="size-3.5 text-[#f2a83c]" />
+      <div className="hidden items-center justify-center gap-2 bg-gradient-to-r from-[#0a4f54] via-[#0d6e74] to-[#0a4f54] px-6 py-3.5 text-sm text-white sm:flex">
+        <Sparkles className="size-4 text-[#f2a83c]" />
         <p>
           Now also accepting patients for our clinician-guided{" "}
           <a
