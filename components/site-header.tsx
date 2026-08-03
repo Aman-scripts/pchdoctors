@@ -2,27 +2,44 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, X, Sparkles, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+const GLP1_PATH = "/services/glp-1-weight-loss-treatment";
+
 const services = [
-  { label: "Medical Marijuana Consultation", href: "#services" },
-  { label: "GLP-1 Weight Loss Treatment", href: "#services" },
+  { label: "Medical Marijuana Consultation", href: "/" },
+  { label: "GLP-1 Weight Loss Treatment", href: GLP1_PATH },
 ];
 
-const navLinks = [
-  { label: "Home", href: "#" },
-  { label: "Services", href: "#services", children: services },
-  { label: "Process", href: "#process" },
-  { label: "Consultations", href: "#consultations" },
-  { label: "Reviews", href: "#reviews" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "FAQs", href: "#faqs" },
+const homeNavLinks = [
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/", children: services },
+  { label: "Process", href: "/#process" },
+  { label: "Consultations", href: "/#consultations" },
+  { label: "Reviews", href: "/#reviews" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "FAQs", href: "/#faqs" },
+];
+
+const glp1NavLinks = [
+  { label: "Home", href: "/" },
+  { label: "Services", href: GLP1_PATH, children: services },
+  { label: "Process", href: `${GLP1_PATH}#process` },
+  { label: "Benefits", href: `${GLP1_PATH}#benefits` },
+  { label: "Why Choose Us", href: `${GLP1_PATH}#why-choose-us` },
+  { label: "Pricing", href: `${GLP1_PATH}#pricing` },
+  { label: "FAQs", href: `${GLP1_PATH}#faqs` },
 ];
 
 export function SiteHeader() {
+  const pathname = usePathname();
+  const isGlp1 = pathname?.startsWith(GLP1_PATH);
+  const navLinks = isGlp1 ? glp1NavLinks : homeNavLinks;
+
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
 
@@ -44,7 +61,7 @@ export function SiteHeader() {
 
       <div className="sticky top-0 z-50 bg-[#dcf0f1]/90 backdrop-blur-md">
         <div className="relative mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-          <Link href="#" className="flex items-center">
+          <Link href="/" className="flex items-center">
             <Image
               src="/pch-doctors-logo.png"
               alt="PCH Doctors"
